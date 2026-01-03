@@ -5,7 +5,6 @@ import random
 import os
 import httpx
 from datetime import datetime
-from urllib.parse import urljoin
 import mysql.connector
 from dotenv import load_dotenv
 
@@ -76,7 +75,7 @@ async def run_calibration():
     setup_database()
 
     if os.getenv("GITHUB_ACTIONS") == "true":
-        delay = random.randint(1080, 1500)
+        delay = random.randint(900, 1080)
         print(f"🕒 Human Mimicry: Waiting {delay//60} mins...")
         await asyncio.sleep(delay)
         print("⏱️ Starting calibration...")

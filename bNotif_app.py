@@ -31,7 +31,10 @@ def get_data():
         query = "SELECT fruit_name, rarity, detected_at FROM fruit_history ORDER BY detected_at DESC"
         with engine.connect() as conn:
             df = pd.read_sql(query, conn)
+        if not df.empty:
+            df['detected_at'] = pd.to_datetime(df['detected_at']) + pd.Timedelta(hours=8)
         return df
+    
     except Exception as e:
         st.error(f"Could not connect to Aiven: {e}")
         return pd.DataFrame()
@@ -78,10 +81,15 @@ if not df.empty:
 
     st.dataframe(
         df.style.applymap(color_rarity, subset=['rarity']),
-        use_container_width=True
+        use_container_width=True,
+        hide_index=True
     )
 else:
     st.warning("Database is empty. Run your submarine script to start collecting data!")
- 
+
+if not df.empty:
+    last_update = df['detected_at'].max().strftime('%Y-%m-%d %H:%M:%S')
+    st.subheader(f"🕒 Last Updated: {last_update} (Local Time)")
+
 st.sidebar.info("Bot Status: 🛰️ Online")
 st.sidebar.write(f"Connected to: `{os.getenv('DB_HOST')}`")
