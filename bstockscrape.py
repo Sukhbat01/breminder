@@ -76,12 +76,12 @@ async def run_calibration():
 
     if os.getenv("GITHUB_ACTIONS") == "true":
         delay = random.randint(900, 1080)
-        print(f"🕒 Human Mimicry: Waiting {delay//60} mins...")
+        print(f"Human Mimicry: Waiting {delay//60} mins...")
         await asyncio.sleep(delay)
-        print("⏱️ Starting calibration...")
+        print("Starting calibration...")
 
     async with async_playwright() as p:
-        print("🚀 Launching Stealth Submarine...")
+        print("Launching Stealth Submarine...")
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
