@@ -1,0 +1,9 @@
+streamlit
+mysql-connector-python
+pandas
+playwright
+lxml
+httpx
+python-dotenv
+sqlalchemy
+mysqlclient
