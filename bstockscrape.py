@@ -99,7 +99,7 @@ async def run_calibration():
             await asyncio.sleep(2)
             content = await page.content()
             await browser.close()
-
+ 
         except Exception as e:
             print(f"Error: {e}")
             await page.screenshot(path="debug_view.png")

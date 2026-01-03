@@ -82,6 +82,6 @@ if not df.empty:
     )
 else:
     st.warning("Database is empty. Run your submarine script to start collecting data!")
-
+ 
 st.sidebar.info("Bot Status: 🛰️ Online")
 st.sidebar.write(f"Connected to: `{os.getenv('DB_HOST')}`")
