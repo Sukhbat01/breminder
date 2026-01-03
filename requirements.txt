@@ -6,4 +6,4 @@ lxml
 httpx
 python-dotenv
 sqlalchemy
-mysqlclient
+pymysql
